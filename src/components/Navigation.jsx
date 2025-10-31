@@ -12,19 +12,19 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-white  border-b border-gray-200">
+    <nav className="p-4">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2 cursor-pointer hover:scale-110">
-            <span className="text-2xl">
+            {/* <span className="text-2xl">
               <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
-            </span>
-         <h1 className="text-3xl font-bold text-[#414141] transition-transform duration-300 bg-[#414141] bg-clip-text text-transparent ">
+            </span> */}
+         <h1 className="text-[3rem] font-bold text-[white] transition-transform duration-300 bg-[white] bg-clip-text text-transparent" style={{fontFamily: 'Fugaz One, cursive'}}>
               GoMiles
             </h1>
           </div>
           
-          <div className="flex space-x-1">
+          <div className="flex space-x-1 px-4 py-2 rounded-[2rem] bg-white border border-[#E1E1E1] ">
             {navItems.map((item) => (
               <button
                 key={item.id}

@@ -1,27 +1,75 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useRef, useState, useEffect } from "react";
+import { useCarContext } from "../context/CarContext";
 
 export default function Home1() {
     const controlsRef = useRef();
     const handleControlsChange = () => {};
-    function CarModel() {
-      const { scene } = useGLTF("/homecar/scene.gltf");
-      scene.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-      return <primitive object={scene} scale={90} position={[-2, -1, 1]} />;
+    const { setSelectedCarColor } = useCarContext();
+    
+    const cars = [{
+        name: "BMW M3",
+        model: "/homecar/scene.gltf",
+        color: "#353B38",
+        color2:"#545F59"
+    }, {
+        name: "Toyota Supra",
+        model: "/homecar2/scene.gltf",
+        color: "#D1030F",
+        color2:"#FC3641"
+    }, {
+        name: "Porsche 911",
+        model: "/homecar3/scene.gltf",
+        color: "#0B295C",
+        color2:"#1651B6"
+    }, {
+        name: "Jeep Wrangler",
+        model: "/homecar4/scene.gltf",
+        color: "#B3291D",
+        color2:"#E35B4F"
+    }];
+    
+    const [currentCarIndex, setCurrentCarIndex] = useState(0);
+    const currentCar = cars[currentCarIndex];
+    
+    useEffect(() => {
+        setSelectedCarColor(currentCar.color);
+    }, [currentCarIndex, setSelectedCarColor, currentCar.color]);
+    
+    const nextCar = () => {
+        setCurrentCarIndex((prev) => (prev + 1) % cars.length);
+    };
+    
+    const prevCar = () => {
+        setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
+    };
+    
+    function CarModel({ modelPath }) {
+        const { scene } = useGLTF(modelPath);
+        scene.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+            }
+        });
+        return <primitive object={scene} scale={90} position={[-2, -1, 1]} />;
     }
   return (
-    <div className="w-full flex flex-col items-center bg-gray-200 from-blue-400 via-purple-500 to-cyan-400">
-        <div className="text-center mt-20">
+    <div className="w-full h-screen flex flex-col justify-center items-center" style={{background: `radial-gradient(circle, ${currentCar.color2}, ${currentCar.color})`}}>
+        {/* <div className="text-center mt-20">
           <h1 className="text-5xl font-bold text-[#414141]">Luxury Cars on Rent</h1>
       
-        </div>
-        <div className="w-full h-96 flex">
+        </div> */}
+        <div className="w-full h-96 flex relative">
+          <div className="absolute inset-0 flex  justify-center pointer-events-none">
+            <h3 className="text-[8rem] font-bold text-white  select-none" style={{fontFamily: 'Fugaz One, cursive'}}>{currentCar.name}</h3>
+          </div>
+          <button onClick={prevCar} className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 rounded-full p-2">
+            <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
           <Canvas 
                 camera={{ position: [0, 0, 4], fov: 45 }}
                 shadows
@@ -56,7 +104,7 @@ export default function Home1() {
               color="#b3b3ff"
             />
             <Suspense fallback={null}>
-              <CarModel />
+              <CarModel modelPath={currentCar.model} />
               <Environment preset="warehouse" background={false} />
               
             </Suspense>
@@ -69,12 +117,16 @@ export default function Home1() {
                 onChange={handleControlsChange}
               />
             </Canvas>
-          <div className="mr-2  flex flex-col justify-center text-sm text-gray-600">
+          <button onClick={nextCar} className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 rounded-full p-2">
+            <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
           
-            <p className="text-sm font-bold"> ↻  Drag to rotate 360°</p>
-            <p className="text-sm font-bold"> ± Pinch to zoom</p>
-          </div>
         </div>
+        {/* <div className="text-center mb-1">
+          <h2 className="text-4xl font-bold bg-clip-text text-transparent" style={{backgroundImage: `linear-gradient(to bottom, ${currentCar.color}, white)`, WebkitBackgroundClip: 'text'}}>{currentCar.name}</h2>
+        </div> */}
     </div>
   );
 }
