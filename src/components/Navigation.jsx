@@ -19,7 +19,7 @@ export default function Navigation() {
             <span className="text-2xl">
               <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
             </span>
-         <h1 className="text-3xl font-bold text-[#414141] transition-transform duration-300 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent ">
+         <h1 className="text-3xl font-bold text-[#414141] transition-transform duration-300 bg-[#414141] bg-clip-text text-transparent ">
               GoMiles
             </h1>
           </div>
