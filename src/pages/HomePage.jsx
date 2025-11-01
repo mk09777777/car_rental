@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import Navigation from "../components/Navigation"
+
 import Home1 from "../components/Home1"
 import Home2 from "../components/Home2"
 import CarCard from "../components/homeCarCard"
@@ -17,14 +17,14 @@ function HomePageContent() {
 
   return (
     <Fragment>
-      <div  style={{backgroundColor: selectedCarColor}}>
-        <Navigation />
+      <div>
+       
 
       <Home1 />
-      <div ref={featuredRef} className={`mt-20  overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${featuredVisible ? 'animate-slide-up' : ''}`}>
+      <div ref={featuredRef} className={`mt-20 bg-white overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${featuredVisible ? 'animate-slide-up' : ''}`}>
         <div className="flex flex-col justify-center items-center ">
-          <h1 className="text-5xl font-bold text-[white]">Featured Vehicles</h1>
-          <span className="text-md mt-4 font-medium text-[white]">Browse our selection of premium vehicles available for your next adventure</span>
+          <h1 className="text-5xl font-bold text-[#414141]">Featured Vehicles</h1>
+          <span className="text-md mt-4 font-medium text-[#414141]">Browse our selection of premium vehicles available for your next adventure</span>
         </div>
         <div className="ml-10 mt-10">
           <CarCard />
@@ -38,11 +38,11 @@ function HomePageContent() {
      <div className="mt-40">
        <Home2 />
       </div>
-        <div ref={reviewRef} className={`mt-40 overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${reviewVisible ? 'animate-slide-up' : ''}`}>
+        <div ref={reviewRef} className={`mt-40 bg-white overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${reviewVisible ? 'animate-slide-up' : ''}`}>
         <div className="flex flex-col justify-center items-center ">
-          <h1 className="text-5xl font-bold text-[white]">What Our Customers Say</h1>
+          <h1 className="text-5xl font-bold text-[#414141]">What Our Customers Say</h1>
       <div className="flex justify-center items-center" >
-            <span className="text-md mt-4 text-center text-[white]">Discover why discerning travelers choose StayVenture for their luxury accommodations<br/> around the world.</span>
+            <span className="text-md mt-4 text-center text-[#414141]">Discover why discerning travelers choose StayVenture for their luxury accommodations<br/> around the world.</span>
       </div>
         </div>
         <div className="ml-10 mt-10">
@@ -50,7 +50,7 @@ function HomePageContent() {
         </div>
     
       </div>
-       <div ref={reviewRef} className={`mt-10 overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${reviewVisible ? 'animate-slide-up' : ''}`}>
+       <div ref={reviewRef} className={`mt-10 bg-white  overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${reviewVisible ? 'animate-slide-up' : ''}`}>
         <Footer/>
       </div>
       </div>

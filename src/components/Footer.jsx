@@ -4,17 +4,17 @@ import React, { Fragment } from "react";
 export default function Footer() {
     return (
         <Fragment>
-            <div className="mt-20 ml-10 mr-10 flex flex-row p-4 border-b border-[#D1D5DC] justify-between items-center">
+            <div className="mt-20 bg-white ml-10 mr-10 flex flex-row p-4 border-b border-[#D1D5DC] justify-between items-center">
                 <div className="flex flex-col ">
                     <div className="flex flex-row items-center " >
                         <span className="text-2xl">
                             <img src="/logo.jpg" alt="Car Icon" className="w-4 h-4 " />
                         </span>
-                        <h1 className="text-xl font-bold text-white ml-2 transition-transform duration-300">
+                        <h1 className="text-xl font-bold text-[#414141] ml-2 transition-transform duration-300">
                             GoMiles
                         </h1>
                     </div>
-                    <span className="mt-2 text-sm text-white">
+                    <span className="mt-2 text-sm text-[#414141]">
                         Premium car rental service with a wide selection of <br/>
                         luxury and everyday vehicles for all your driving  <br/>
                         needs.
@@ -27,34 +27,34 @@ export default function Footer() {
                 </div>
                <div className="flex flex-row">
                  <div className="flex flex-col ml-40">
-                    <h1 className="text-md font-bold text-white">QUICK LINKS</h1>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Home</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Browse Cars</span>
-                     <span className="mt-2  text-sm text-white cursor-pointer">List Your Cars</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">About Us</span>   
+                    <h1 className="text-md font-bold text-[#414141]">QUICK LINKS</h1>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Home</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Browse Cars</span>
+                     <span className="mt-2  text-sm text-[#414141] cursor-pointer">List Your Cars</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">About Us</span>   
                 </div>
                   <div className="flex flex-col ml-20">
-                    <h1 className="text-md font-bold text-white">RESOURCES</h1>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Help Center</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Terms of Service</span>
-                     <span className="mt-2  text-sm text-white cursor-pointer">Privacy Policy</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Insurance</span>   
+                    <h1 className="text-md font-bold text-[#414141]">RESOURCES</h1>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Help Center</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Terms of Service</span>
+                     <span className="mt-2  text-sm text-[#414141] cursor-pointer">Privacy Policy</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Insurance</span>   
                 </div>
                  <div className="flex flex-col ml-20">
-                    <h1 className="text-md font-bold text-white">CONTACT</h1>
-                    <span className="mt-2  text-sm text-white cursor-pointer">1234 Luxury Drive</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">City, State, ZIP</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Phone: (123) 456-7890</span>
-                    <span className="mt-2  text-sm text-white cursor-pointer">Email: info@gomiles.com</span>
+                    <h1 className="text-md font-bold text-[#414141]">CONTACT</h1>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">1234 Luxury Drive</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">City, State, ZIP</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Phone: (123) 456-7890</span>
+                    <span className="mt-2  text-sm text-[#414141] cursor-pointer">Email: info@gomiles.com</span>
                 </div>
                </div>
             </div>
             <div className="flex flex-row ml-10 justify-between items-center p-1">
-                <span className="text-sm text-white">© 2024 GoMiles. All rights reserved.</span>
+                <span className="text-sm text-[#414141]">© 2024 GoMiles. All rights reserved.</span>
                 <div className="flex flex-row"> 
-                     <span className="mt-2 mr-10 text-sm text-white cursor-pointer">Terms </span>
-                     <span className="mt-2 mr-10 text-sm text-white cursor-pointer">Privacy</span>
-                    <span className="mt-2 mr-10 text-sm text-white cursor-pointer">Cookies</span> </div>
+                     <span className="mt-2 mr-10 text-sm text-[#414141] cursor-pointer">Terms </span>
+                     <span className="mt-2 mr-10 text-sm text-[#414141] cursor-pointer">Privacy</span>
+                    <span className="mt-2 mr-10 text-sm text-[#414141] cursor-pointer">Cookies</span> </div>
             </div>
         </Fragment>
     )
