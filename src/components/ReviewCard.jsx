@@ -1,18 +1,21 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import { UseReviewStore } from '../store/Reviews';  
+import axios from 'axios';
 
 export default function ReviewCard() {
+    const { reviewsData, fetchReviews } = UseReviewStore();
+
+    useEffect(() => {
+        fetchReviews();
+    }, [fetchReviews]);
+
     const [ref, isVisible] = useIntersectionObserver();
-    const ReviewData=[
-        {id: 1, name: "John Doe", review: "I've used many booking platforms before, but none compare to the personalized experience and attention to detail that CarRental provides.", rating: 5, area: "New York", profile:"/user1.png"},
-        {id: 2, name: "Jane Smith", review: "I've used many booking platforms before, but none compare to the personalized experience and attention to detail that CarRental provides.", rating: 4, area: "Los Angeles",profile:"/user1.png"},
-        {id: 3, name: "Alice Johnson", review: "I've used many booking platforms before, but none compare to the personalized experience and attention to detail that CarRental provides.", rating: 5, area: "Chicago", profile:"/user1.png"},
-        {id: 4, name: "Bob Brown", review: "I've used many booking platforms before, but none compare to the personalized experience and attention to detail that CarRental provides.", rating: 4, area: "Houston", profile:"/user1.png"}
-    ]
+
     return(
         <Fragment>
             <div ref={ref} className={`grid grid-cols-4 gap-4 mr-10 mb-10`}>
-            {ReviewData.map((item,index)=>(
+            {reviewsData.map((item,index)=>(
                 <div key={index} className={` ${isVisible ? 'animate-fade-in' : ''} bg-white flex flex-col p-5 hover:scale-105 transition-transform rounded-lg shadow-md`}>
                         <div className='flex flex-row justify-between'>
                             <div className='flex flex-row'>

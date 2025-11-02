@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Suspense, useRef, useState, useEffect } from "react";
-import { useCarContext } from "../context/CarContext";
+import { useCarContext } from "../context/CarContext.jsx";
 import Navigation from "./Navigation";
 
 export default function Home1() {
@@ -54,7 +54,7 @@ export default function Home1() {
                 child.receiveShadow = true;
             }
         });
-        return <primitive object={scene} scale={80} position={[-2, -1.6, 1]} />;
+        return <primitive object={scene} scale={65} position={[-2, -1.6, 1]} />;
     }
   return (
     <div style={{background: `radial-gradient(circle, ${currentCar.color2}, ${currentCar.color})`}}>
@@ -66,7 +66,7 @@ export default function Home1() {
       
         </div> */}
         <div className="w-full h-screen mb-20 flex relative">
-          <div className="absolute top-28 inset-0 flex  justify-center pointer-events-none">
+          <div className="absolute top-32 inset-0 flex  justify-center pointer-events-none">
             <h3 className="text-[8rem] font-bold text-white  select-none" style={{fontFamily: 'Fugaz One, cursive'}}>{currentCar.name}</h3>
           </div>
           <button onClick={prevCar} className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 rounded-full p-2">
@@ -111,7 +111,7 @@ export default function Home1() {
               <CarModel modelPath={currentCar.model} />
               <mesh rotation={[-Math.PI / 2, 0, 0]} position={[-2, -1.7, 1]} receiveShadow>
                 <circleGeometry args={[1.5, 100]} />
-                <shadowMaterial opacity={0.3} />
+                <shadowMaterial opacity={0.1} transparent blur={80} />
               </mesh>
               <Environment preset="warehouse" background={false} />
               

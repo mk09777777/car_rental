@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 
 import Home1 from "../components/Home1"
 import Home2 from "../components/Home2"
@@ -6,7 +6,8 @@ import CarCard from "../components/homeCarCard"
 import ReviewCard from "../components/ReviewCard"
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
 import Footer from "../components/Footer"
-import { CarProvider, useCarContext } from "../context/CarContext"
+import { CarProvider, useCarContext } from "../context/CarContext.jsx"
+import axios from "axios"
 
 
 
@@ -14,6 +15,20 @@ function HomePageContent() {
   const [featuredRef, featuredVisible] = useIntersectionObserver();
   const [reviewRef, reviewVisible] = useIntersectionObserver();
   const { selectedCarColor } = useCarContext();
+  const [cars,setCars]= useState([])
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/cars');
+        console.log("response data:", response.data);
+        setCars(response.data);
+      } catch (error) {
+        console.error('Error fetching cars:', error);
+      }
+    };
+    fetchCars();
+  }, [])
 
   return (
     <Fragment>
