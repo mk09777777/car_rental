@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/Auth'
 export default function Navigation({handleLoginOpen}) {
   const [activeTab, setActiveTab] = useState('home')
   const { isAuthenticated ,logout} = useAuthStore()
-  
+
   const handleLogout=()=>{
     logout();
   }
@@ -64,7 +64,7 @@ export default function Navigation({handleLoginOpen}) {
                 </button>
               </div>
             ) : (
-              <button onClick={handleLogout} className="bg-[#2563EB] text-white px-4 py-2 rounded-[1rem] hover:bg-blue-600 transition-colors duration-200">Sign Out</button>
+              <button onClick={handleLogout} className="bg-[#2563EB] text-white px-4 py-2 rounded-[2rem] hover:bg-blue-600 transition-colors duration-200">Sign Out</button>
             )} 
           </div>
         </div>
