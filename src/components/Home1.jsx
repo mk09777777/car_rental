@@ -3,11 +3,14 @@ import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Suspense, useRef, useState, useEffect } from "react";
 import { useCarContext } from "../context/CarContext.jsx";
 import Navigation from "./Navigation";
+import UserSign from "./usersign.jsx";
 
 export default function Home1() {
     const controlsRef = useRef();
     const handleControlsChange = () => {};
     const { setSelectedCarColor } = useCarContext();
+    const [loginOpen,setLoginOpen] = useState(false);
+    const [sign,setSign]=useState(false);
     
     const cars = [{
         name: "BMW M3",
@@ -56,16 +59,30 @@ export default function Home1() {
         });
         return <primitive object={scene} scale={65} position={[-2, -1.6, 1]} />;
     }
+
+    const handleLoginOpen=(login)=>{
+      setLoginOpen(login);
+    }
+
+
+    const handlesignin=(Sign)=>{
+    setSign(Sign);
+    }
+
   return (
     <div style={{background: `radial-gradient(circle, ${currentCar.color2}, ${currentCar.color})`}}>
-         <Navigation />
+         <Navigation handleLoginOpen={handleLoginOpen} sign={sign} />
+      
       <div className="w-full h-screen flex flex-col justify-center items-center" >
+             {loginOpen && <UserSign onClose={()=>setLoginOpen(false)} handlesignin={handlesignin} />}
+         
     
         {/* <div className="text-center mt-20">
           <h1 className="text-5xl font-bold text-[#414141]">Luxury Cars on Rent</h1>
       
         </div> */}
         <div className="w-full h-screen mb-20 flex relative">
+          
           <div className="absolute top-32 inset-0 flex  justify-center pointer-events-none">
             <h3 className="text-[8rem] font-bold text-white  select-none" style={{fontFamily: 'Fugaz One, cursive'}}>{currentCar.name}</h3>
           </div>
