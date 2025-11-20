@@ -16,7 +16,7 @@ export default function CarsPage() {
         <div className="min-h-screen bg-gray-50">
             <Navigation headerColor={"#414141"} />
             <div className="container mx-auto px-4 py-8">
-                <h1 className="text-3xl font-bold text-center mb-8">Our Car Collection</h1>
+          
                 <SearchBar onSearch={handleSearch} placeholder="Search by name, brand, model, or type..." />
                 <CarCard fetchFunction={fetchAllCars} />
             </div>
