@@ -3,12 +3,13 @@ import axios from "axios";
 import { useCarStore } from '../store/Cars';
 
 
-export default function CarCard(){
-    const { carData, fetchCars } = useCarStore();
+export default function CarCard({ fetchFunction }){
+    const { carData, fetchCars, fetchAllCars } = useCarStore();
+    const fetchFn = fetchFunction || fetchCars;
 
     useEffect(()=>{
-        fetchCars();
-    },[fetchCars])
+        fetchFn();
+    },[fetchFn])
 
 
 //     const carData=[{

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useAuthStore } from '../store/Auth'
+import { Link } from 'react-router-dom'
 
-export default function Navigation({handleLoginOpen}) {
+export default function Navigation({handleLoginOpen, headerColor = "white"}) {
   const [activeTab, setActiveTab] = useState('home')
   const { isAuthenticated ,logout} = useAuthStore()
 
@@ -31,7 +32,7 @@ export default function Navigation({handleLoginOpen}) {
             {/* <span className="text-2xl">
               <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
             </span> */}
-            <h1 className="text-[3rem] font-bold text-[white] transition-transform duration-300 bg-[white] bg-clip-text text-transparent" style={{ fontFamily: 'Fugaz One, cursive' }}>
+            <h1 className="text-[3rem] font-bold transition-transform duration-300" style={{ fontFamily: 'Fugaz One, cursive', color: headerColor }}>
               GoMiles
             </h1>
           </div>
@@ -44,19 +45,20 @@ export default function Navigation({handleLoginOpen}) {
               </svg>
             </div>
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
+                to={item.id === 'home' ? '/' : `/${item.id}`}
                 onClick={() => setActiveTab(item.id)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001`}
-
               >
                 <span>{item.icon}</span>
                 <span>{item.label}</span>
-              </button>
+              </Link>
             ))}
 
 
-            <span className="px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001">List cars</span>
+            <Link to="/cars" className="px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001">List cars</Link>
+            <Link to="/admin" className="px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001">Admin</Link>
             {!isAuthenticated ? (
               <div className='ml-3 justify-center flex items-center'>
                 <button onClick={() => handleLoginOpen2(true)} className=' px-4 py-1 rounded-[2rem] hover:scale-105 transition-transform  font-medium items-center justify-center  flex items-center space-x-2 bg-[#333333] '>

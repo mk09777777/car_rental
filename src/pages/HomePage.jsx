@@ -7,6 +7,7 @@ import ReviewCard from "../components/ReviewCard"
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver"
 import Footer from "../components/Footer"
 import { CarProvider, useCarContext } from "../context/CarContext.jsx"
+import { useCarStore } from "../store/Cars"
 import axios from "axios"
 
 
@@ -15,20 +16,7 @@ function HomePageContent() {
   const [featuredRef, featuredVisible] = useIntersectionObserver();
   const [reviewRef, reviewVisible] = useIntersectionObserver();
   const { selectedCarColor } = useCarContext();
-  const [cars,setCars]= useState([])
-
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/cars');
-        console.log("response data:", response.data);
-        setCars(response.data);
-      } catch (error) {
-        console.error('Error fetching cars:', error);
-      }
-    };
-    fetchCars();
-  }, [])
+  const { fetchCars } = useCarStore();
 
   return (
     <Fragment>
@@ -42,7 +30,7 @@ function HomePageContent() {
           <span className="text-md mt-4 font-medium text-[#414141]">Browse our selection of premium vehicles available for your next adventure</span>
         </div>
         <div className="ml-10 mt-10">
-          <CarCard />
+          <CarCard fetchFunction={fetchCars} />
         </div>
         <div className="flex flex-col justify-center items-center ">
           <button className=" hover:border-[#BCC5DE80]  bg-white hover:scale-105 transition-transform border border-[#BCC5DE80] border-1 text-[#414141] px-4  py-2 rounded-md ml-10 mt-10">
