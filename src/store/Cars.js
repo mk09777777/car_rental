@@ -16,6 +16,21 @@ export const useCarStore = create((set) => ({
       set({ error: error.message, loading: false });
       console.error('Error fetching cars:', error);
     }
-  }
-}));
+  },
+  
+
+
+fetchAllCars : async ()=>{
+   set({loading:true, error:null});
+   try{
+    const response = await axios.get(`${API_BASE_URL}/cars`);
+    set({carData:response.data,loading:false});
+    console.log('Fetched all cars:',response.data);
+
+   } catch(error){
+    set({error:error.message,loading:false});
+    console.error('Error fetching all cars:',error);
+   }}
+})
+);
 

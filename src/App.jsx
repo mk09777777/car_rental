@@ -3,6 +3,9 @@ import Navigation from "./components/Navigation"
 import Dashboard from "./pages/Dashboard"
 import HomePage from "./pages/HomePage"
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Admin from "./pages/Admin"
+import AdminDashboard from "./pages/AdminDashboard"
+import CarsList from "./pages/Cars"
 
 function App() {
   return (
@@ -11,6 +14,9 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/AdminDashboard" element={<AdminDashboard/>} />
+          <Route path="/carsList" element={<CarsList/>} />
      
         </Routes>
       </Router>

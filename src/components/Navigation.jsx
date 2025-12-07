@@ -23,6 +23,12 @@ export default function Navigation({handleLoginOpen}) {
     
   }
 
+  const handleNavPress=(label)=>{
+     if(label==='Cars'){
+      window.location.href='/carsList';
+     }  
+  }
+
   return (
     <nav className="p-4">
       <div className="max-w-7xl mx-auto px-4">
@@ -31,7 +37,7 @@ export default function Navigation({handleLoginOpen}) {
             {/* <span className="text-2xl">
               <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
             </span> */}
-            <h1 className="text-[3rem] font-bold text-[white] transition-transform duration-300 bg-[white] bg-clip-text text-transparent" style={{ fontFamily: 'Fugaz One, cursive' }}>
+            <h1 className="text-[3rem] font-bold text-black transition-transform duration-300" style={{ fontFamily: 'Fugaz One, cursive' }}>
               GoMiles
             </h1>
           </div>
@@ -51,7 +57,7 @@ export default function Navigation({handleLoginOpen}) {
 
               >
                 <span>{item.icon}</span>
-                <span>{item.label}</span>
+              <button onClick={() => handleNavPress(item.label)}>  <span>{item.label}</span></button>
               </button>
             ))}
 

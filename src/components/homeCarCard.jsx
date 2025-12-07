@@ -3,26 +3,21 @@ import axios from "axios";
 import { useCarStore } from '../store/Cars';
 
 
-export default function CarCard(){
-    const { carData, fetchCars } = useCarStore();
+export default function CarCard({ cars }){
+  
 
-    useEffect(()=>{
-        fetchCars();
-    },[fetchCars])
-
-
-//     const carData=[{
-//         id:1,
-//         name:"Mercedes-Benz S-Class",
-//         image:"/car1.png",
-//         type:"Luxury Sedan",
-//         seats:"5 seaters",
-//         pricePerDay:"$150",
-//         rating:4.8,
-//         fuelType:"Petrol",
-//         transmission:"Automatic",
-//         location:"New York"
-//     },{
+    // const carData=[{
+    //     id:1,
+    //     name:"Mercedes-Benz S-Class",
+    //     image:"/car1.png",
+    //     type:"Luxury Sedan",
+    //     seats:"5 seaters",
+    //     pricePerDay:"$150",
+    //     rating:4.8,
+    //     fuelType:"Petrol",
+    //     transmission:"Automatic",
+    //     location:"New York"
+    // },{
 //         id:2,
 //         name:"BMW 7 Series",
 //         image:"/car1.png",
@@ -115,7 +110,7 @@ export default function CarCard(){
 //     ]
     return(
         <div className="grid  grid-cols-4 gap-4 mr-10">
-            {carData.map((item,index)=>(
+            {cars.map((item,index)=>(
                 <div className="flex hover:scale-105 transition-transform duration-300 bg-white flex-col shadow-lg rounded-xl p-4" key={index}>
                 <img src={item.image} alt={item.name} className="w-full h-48 object-cover rounded"/>
                 <h1 className="mt-5 text-black text-lg font-bold">
