@@ -3,6 +3,9 @@ import Navigation from "./components/Navigation"
 import Dashboard from "./pages/Dashboard"
 import HomePage from "./pages/HomePage"
 import { GoogleOAuthProvider } from '@react-oauth/google'
+// import Cars from "./pages/Cars"
+// import About from "./pages/About"
+import Mybookings from "./pages/Mybookings"
 
 function App() {
   return (
@@ -11,7 +14,10 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-     
+          {/* <Route path="/cars" element={<Cars/>} />
+          <Route path="/about" element={<About/>} /> */}
+           <Route path="/mybookings" element={<Mybookings/>} />
+        
         </Routes>
       </Router>
     </GoogleOAuthProvider>
