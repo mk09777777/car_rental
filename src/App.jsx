@@ -3,12 +3,12 @@ import Navigation from "./components/Navigation"
 import Dashboard from "./pages/Dashboard"
 import HomePage from "./pages/HomePage"
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import Admin from "./pages/Admin"
-import AdminDashboard from "./pages/AdminDashboard"
-import CarsList from "./pages/Cars"
-// import Cars from "./pages/Cars"
-// import About from "./pages/About"
 import Mybookings from "./pages/Mybookings"
+import CarsList from "./pages/Cars"
+import MyBookings from "./pages/Mybookings"
+// import CarsList from "./pages/Cars"
+
+
 
 function App() {
   return (
@@ -17,7 +17,11 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-     
+          <Route path="/cars" element={<CarsList/>} />
+          <Route path="/mybookings" element={<MyBookings/>} />
+          
+
+    
         </Routes>
       </Router>
     </GoogleOAuthProvider>

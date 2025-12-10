@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
-import { useCarStore } from '../store/Cars';
+// import { useCarStore } from '../store/Cars';
 import CarCard from '../components/homeCarCard';
 import Navigation from '../components/Navigation';
+import { useCarStore } from '../store/Cars';
 
 
 
