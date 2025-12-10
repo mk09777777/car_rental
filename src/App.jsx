@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import Admin from "./pages/Admin"
 import AdminDashboard from "./pages/AdminDashboard"
 import CarsList from "./pages/Cars"
+import AdminCarsList from "./pages/AdminCarsList"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/admin" element={<Admin/>} />
           <Route path="/AdminDashboard" element={<AdminDashboard/>} />
           <Route path="/carsList" element={<CarsList/>} />
+          <Route path="/AdminCarsList" element={<AdminCarsList/>} />
      
         </Routes>
       </Router>

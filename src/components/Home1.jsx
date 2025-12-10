@@ -71,7 +71,7 @@ export default function Home1() {
 
   return (
     <div style={{background: `radial-gradient(circle, ${currentCar.color2}, ${currentCar.color})`}}>
-         <Navigation handleLoginOpen={handleLoginOpen} sign={sign} />
+         <Navigation handleLoginOpen={handleLoginOpen} sign={sign} isHomePage={true} />
       
       <div className="w-full h-screen flex flex-col justify-center items-center" >
              {loginOpen && <UserSign onClose={()=>setLoginOpen(false)} handlesignin={handlesignin} />}

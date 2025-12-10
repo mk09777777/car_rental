@@ -1,13 +1,18 @@
 import { useState } from 'react'
-import { useAuthStore } from '../store/Auth'
+import { useAdminStore } from '../store/Admin'
+import { useNavigate } from 'react-router-dom'
 
-export default function Navigation({handleLoginOpen, isHomePage = false}) {
+export default function AdminNavigation({ }) {
   const [activeTab, setActiveTab] = useState('home')
-  const { isAuthenticated ,logout} = useAuthStore()
+  const { isAuthenticated, AdminLogout } = useAdminStore()
+  const navigate = useNavigate()
 
-  const handleLogout=()=>{
-    logout();
+  const handleLogout = () => {
+    AdminLogout();
+    navigate('/admin');
   }
+
+
   
 
 
@@ -18,29 +23,26 @@ export default function Navigation({handleLoginOpen, isHomePage = false}) {
     { id: 'about', label: 'About', },
     // { id: 'contact', label: 'Contact', icon: '📞' }
   ]
-  const handleLoginOpen2=(login)=>{
-    handleLoginOpen(login);
-    
-  }
+
 
   const handleNavPress=(label)=>{
      if(label==='Cars'){
-      window.location.href='/carsList';
+      window.location.href='/AdminCarsList';
      }  
      if(label==='Home'){
-      window.location.href='/';
+      window.location.href='/AdminDashboard';
      }
   }
 
   return (
-    <nav className="p-4">
+    <nav className="p-4 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2 cursor-pointer hover:scale-110">
             {/* <span className="text-2xl">
               <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
             </span> */}
-            <h1 className={`text-[3rem] font-bold transition-transform duration-300 ${isHomePage ? 'text-white' : 'text-[#333333]'}`} style={{ fontFamily: 'Fugaz One, cursive' }}>
+            <h1 className={`text-[3rem] font-bold transition-transform duration-300 text-[#333333]`} style={{ fontFamily: 'Fugaz One, cursive' }}>
               GoMiles
             </h1>
           </div>
@@ -65,16 +67,12 @@ export default function Navigation({handleLoginOpen, isHomePage = false}) {
             ))}
 
 
-            <span className="px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001">List cars</span>
-            {!isAuthenticated ? (
-              <div className='ml-3 justify-center flex items-center'>
-                <button onClick={() => handleLoginOpen2(true)} className=' px-4 py-1 rounded-[2rem] hover:scale-105 transition-transform  font-medium items-center justify-center  flex items-center space-x-2 bg-[#333333] '>
-                  <span className='text-white'>Sign In</span>
-                </button>
-              </div>
-            ) : (
-              <button onClick={handleLogout} className="bg-[#2563EB] text-white px-4 py-2 rounded-[2rem] hover:bg-blue-600 transition-colors duration-200">Sign Out</button>
-            )} 
+            {/* <span className="px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-[#414141CC] hover:bg-gray-100 hover:text-gray-8001">List cars</span> */}
+            <div className='ml-3 justify-center flex items-center'>
+              <button onClick={handleLogout} className='px-4 py-1 rounded-[2rem] hover:scale-105 transition-transform font-medium items-center justify-center flex items-center space-x-2 bg-[#333333]'>
+                <span className='text-white'>Logout</span>
+              </button>
+            </div> 
           </div>
         </div>
       </div>

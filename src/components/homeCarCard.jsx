@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import axios from "axios";
 import { useCarStore } from '../store/Cars';
+import { motion } from 'framer-motion';
 
 
 export default function CarCard({ cars }){
@@ -112,7 +113,15 @@ export default function CarCard({ cars }){
         <div className="grid  grid-cols-4 gap-4 mr-10">
             {cars.map((item,index)=>(
                 <div className="flex hover:scale-105 transition-transform duration-300 bg-white flex-col shadow-lg rounded-xl p-4" key={index}>
-                <img src={item.image} alt={item.name} className="w-full h-48 object-cover rounded"/>
+                <motion.img 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="w-full h-48 object-cover rounded"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                />
                 <h1 className="mt-5 text-black text-lg font-bold">
                     {item.name}
                 </h1>
