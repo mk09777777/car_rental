@@ -130,7 +130,7 @@ export default function CarCard({ cars }){
                         {item.type}
                     </span>
                     <span className="text-gray-600">
-                        {item.seats}
+                        {item.seats} {!isNaN(item.seats) ? "seaters" : ""}
                     </span>
                 </div>
                  <div className="flex flex-row mt-5 justify-between">

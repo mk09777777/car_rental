@@ -97,4 +97,22 @@ export const useAdminStore = create((set) => ({
         localStorage.removeItem('token');
     },
 
+    AddCar: async (carData)=>{
+        set((state) => ({ ...state, loading: true, error: null }));
+        try{
+             {
+                const response = await axios.post(`${API_BASE_URL}/addCar`, carData);
+                console.log("Car added successfully:", response.data);
+                    alert("Car added successfully");
+                    set((state) => ({ ...state, loading: false }));
+                    console.log("Car added successfully:", response.data);
+                return response.data;
+            };
+        }catch (err) {
+            console.error("Error during adding car:", err);
+            console.error("Error response:", err.response?.data);
+            const errorMessage = err.response?.data?.message || err.message;
+            set((state) => ({ ...state, loading: false, error: errorMessage }));
+        }
+    }
 }))

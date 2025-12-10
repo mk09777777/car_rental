@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Dashboard from "./AdminDashboard";
+import AdminAddCar from "./AdminAddCar";
 
 
 export default function AdminSideBar() {
@@ -15,7 +16,7 @@ export default function AdminSideBar() {
             case 'dashboard':
                 return <Dashboard />;
             case 'addcars':
-                return <div className='p-8'><h1 className='text-2xl font-bold'>Add Cars</h1></div>;
+                return <AdminAddCar />;
             case 'ManageCars':
                 return <div className='p-8'><h1 className='text-2xl font-bold'>Manage Cars</h1></div>;
             case 'ManageBookings':
