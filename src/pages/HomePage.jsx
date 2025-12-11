@@ -9,6 +9,8 @@ import Footer from "../components/Footer"
 import { CarProvider, useCarContext } from "../context/CarContext.jsx"
 import axios from "axios"
 import { useCarStore } from "../store/Cars.js"
+import { useNavigate } from "react-router-dom"
+import HomeSideBar from "../components/HomeSideBar"
 
 
 
@@ -16,6 +18,7 @@ function HomePageContent() {
   const [featuredRef, featuredVisible] = useIntersectionObserver();
   const [reviewRef, reviewVisible] = useIntersectionObserver();
  const {carData,fetchCars}=useCarStore();
+ const navigate = useNavigate()
 
  useEffect(()=>{
   fetchCars();
@@ -24,10 +27,9 @@ function HomePageContent() {
 
   return (
     <Fragment>
-      <div>
-       
-
-      <Home1 />
+      <HomeSideBar />
+      <div className="ml-64">
+        <Home1 />
       <div ref={featuredRef} className={`mt-20 bg-white overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${featuredVisible ? 'animate-slide-up' : ''}`}>
         <div className="flex flex-col justify-center items-center ">
           <h1 className="text-5xl font-bold text-[#414141]">Featured Vehicles</h1>
@@ -37,7 +39,7 @@ function HomePageContent() {
           <CarCard cars={carData} />
         </div>
         <div className="flex flex-col justify-center items-center ">
-          <button className=" hover:border-[#BCC5DE80]  bg-white hover:scale-105 transition-transform border border-[#BCC5DE80] border-1 text-[#414141] px-4  py-2 rounded-md ml-10 mt-10">
+          <button onClick={()=>navigate("/carsList")} className=" hover:border-[#BCC5DE80]  bg-white hover:scale-105 transition-transform border border-[#BCC5DE80] border-1 text-[#414141] px-4  py-2 rounded-md ml-10 mt-10">
             <span className="text-[#414141] ">Explore all cars ➜ </span>
           </button>
         </div>
