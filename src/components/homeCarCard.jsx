@@ -2,10 +2,11 @@ import React, { Fragment, useEffect } from "react";
 import axios from "axios";
 import { useCarStore } from '../store/Cars';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function CarCard({ cars }){
-  
+    const navigate = useNavigate();
 
     // const carData=[{
     //     id:1,
@@ -112,7 +113,11 @@ export default function CarCard({ cars }){
     return(
         <div className="grid  grid-cols-4 gap-4 mr-10">
             {cars.map((item,index)=>(
-                <div className="flex hover:scale-105 transition-transform duration-300 bg-white flex-col shadow-lg rounded-xl p-4" key={index}>
+                <div 
+                    className="flex hover:scale-105 transition-transform duration-300 bg-white flex-col shadow-lg rounded-xl p-4 cursor-pointer" 
+                    key={index}
+                    onClick={() => navigate(`/car-details/${item._id}`)}
+                >
                 <motion.img 
                     src={item.image} 
                     alt={item.name} 

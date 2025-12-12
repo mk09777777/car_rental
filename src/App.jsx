@@ -7,6 +7,7 @@ import Admin from "./pages/Admin"
 import AdminDashboard from "./pages/AdminDashboard"
 import CarsList from "./pages/Cars"
 import AdminCarsList from "./pages/AdminCarsList"
+import CarDetails from "./pages/CarDetails"
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/AdminDashboard" element={<AdminDashboard/>} />
+          <Route path="/cars" element={<CarsList/>} />
           <Route path="/carsList" element={<CarsList/>} />
+          <Route path="/car-details/:id" element={<CarDetails/>} />
           <Route path="/AdminCarsList" element={<AdminCarsList/>} />
      
         </Routes>
