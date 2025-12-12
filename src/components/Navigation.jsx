@@ -1,9 +1,9 @@
 // import { useState } from 'react'
 // import { useAuthStore } from '../store/Auth'
 
-// export default function Navigation({handleLoginOpen}) {
-//   const [activeTab, setActiveTab] = useState('home')
-//   const { isAuthenticated ,logout} = useAuthStore()
+export default function Navigation({handleLoginOpen, isHomePage = false}) {
+  const [activeTab, setActiveTab] = useState('home')
+  const { isAuthenticated ,logout} = useAuthStore()
 
 //   const handleLogout=()=>{
 //     logout();
@@ -93,19 +93,26 @@
 
 import { useNavigate } from "react-router-dom";
 
-const navItems = [
-  { id: "home", label: "Home", path: "/" },
-  { id: "cars", label: "Cars", path: "/cars" },
-  { id: "mybookings", label: "MyBookings", path: "/mybookings" },
-  { id: "about", label: "About", path: "/about" },
-];
+  const navItems = [
+    { id: 'home', label: 'Home', },
+    { id: 'cars', label: 'Cars', },
+    // { id: 'rental', label: 'Rental', icon: '📋' },
+    { id: 'about', label: 'About', },
+    // { id: 'contact', label: 'Contact', icon: '📞' }
+  ]
+  const handleLoginOpen2=(login)=>{
+    handleLoginOpen(login);
+    
+  }
 
-export default function Navigation({ isAuthenticated, handleLoginOpen, handleLogout }) {
-  const navigate = useNavigate();
-
-  const handleNavPress = (path) => {
-    navigate(path);
-  };
+  const handleNavPress=(label)=>{
+     if(label==='Cars'){
+      window.location.href='/carsList';
+     }  
+     if(label==='Home'){
+      window.location.href='/';
+     }
+  }
 
   return (
     <nav className="p-4">
@@ -113,10 +120,10 @@ export default function Navigation({ isAuthenticated, handleLoginOpen, handleLog
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2 cursor-pointer hover:scale-110">
-            <h1
-              className="text-[3rem] font-bold text-black transition-transform duration-300"
-              style={{ fontFamily: "Fugaz One, cursive" }}
-            >
+            {/* <span className="text-2xl">
+              <img src="/logo.jpg" alt="Car Icon" className="w-8 h-8 "/>
+            </span> */}
+            <h1 className={`text-[3rem] font-bold transition-transform duration-300 ${isHomePage ? 'text-white' : 'text-[#333333]'}`} style={{ fontFamily: 'Fugaz One, cursive' }}>
               GoMiles
             </h1>
           </div>

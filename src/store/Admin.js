@@ -64,11 +64,14 @@ export const useAdminStore = create((set) => ({
                 loading: false,
                 sign: true,
                 token: AdminLogin.data.token,
-                email: email,
+                name: AdminLogin.data.name,
+                email: AdminLogin.data.email,
                 isAuthenticated: true
             }));
             localStorage.setItem('isAuthenticated', 'true');
-            localStorage.setItem('email', email);
+            localStorage.setItem('email', AdminLogin.data.email);
+            localStorage.setItem('name', AdminLogin.data.name);
+            localStorage.setItem('token', AdminLogin.data.token);
         }catch (err) {
             console.error("Error during Admin login:", err);
             console.error("Error response:", err.response?.data);
@@ -77,4 +80,39 @@ export const useAdminStore = create((set) => ({
         }   
     },
 
+    AdminLogout: () => {
+        set({
+            name: "",
+            email: "",
+            token: "",
+            password: "",
+            isAuthenticated: false,
+            sign: false,
+            loading: false,
+            error: null
+        });
+        localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
+        localStorage.removeItem('token');
+    },
+
+    AddCar: async (carData)=>{
+        set((state) => ({ ...state, loading: true, error: null }));
+        try{
+             {
+                const response = await axios.post(`${API_BASE_URL}/addCar`, carData);
+                console.log("Car added successfully:", response.data);
+                    alert("Car added successfully");
+                    set((state) => ({ ...state, loading: false }));
+                    console.log("Car added successfully:", response.data);
+                return response.data;
+            };
+        }catch (err) {
+            console.error("Error during adding car:", err);
+            console.error("Error response:", err.response?.data);
+            const errorMessage = err.response?.data?.message || err.message;
+            set((state) => ({ ...state, loading: false, error: errorMessage }));
+        }
+    }
 }))
