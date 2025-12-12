@@ -16,6 +16,7 @@ export default function Navigation({handleLoginOpen, isHomePage = false}) {
     { id: 'cars', label: 'Cars', },
     // { id: 'rental', label: 'Rental', icon: '📋' },
     { id: 'about', label: 'About', },
+    {id:"mybookings",label:"My Bookings "}
     // { id: 'contact', label: 'Contact', icon: '📞' }
   ]
   const handleLoginOpen2=(login)=>{
