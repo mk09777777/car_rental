@@ -6,6 +6,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import Mybookings from "./pages/Mybookings"
 import CarsList from "./pages/Cars"
 import MyBookings from "./pages/Mybookings"
+import About from "./pages/About"
+
 // import CarsList from "./pages/Cars"
 
 
@@ -19,6 +21,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/cars" element={<CarsList/>} />
           <Route path="/mybookings" element={<MyBookings/>} />
+          <Route path='/about' element={<About/>}/>
           
 
     

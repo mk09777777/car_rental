@@ -545,6 +545,8 @@ export const dummyMyBookingsData = [
     {
         "_id": "68482bcc98eb9722b7751f70",
         "car": CarData[0],
+          name:"BMW M5",
+
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-13T00:00:00.000Z",
@@ -556,6 +558,7 @@ export const dummyMyBookingsData = [
     {
         "_id": "68482bb598eb9722b7751f602",
         "car": CarData[1],
+           name:"BMW M4",
         "user": "6847f7cab3d8daecdb517095",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
         "pickupDate": "2025-06-12T00:00:00.000Z",
@@ -567,6 +570,7 @@ export const dummyMyBookingsData = [
     {
         "_id": "684800fa0fb481c5cfd92e568",
         "car": CarData[2],
+         name:"Tesla model 3",
         "user": "6847f7cab3d8daecdb517095",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
         "pickupDate": "2025-06-11T00:00:00.000Z",
@@ -578,6 +582,7 @@ export const dummyMyBookingsData = [
     {
         "_id": "6847fe790fb481c5cfd92d106",
         "car": CarData[3],
+          name:"Chovrolet Camaro",
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-11T00:00:00.000Z",
@@ -590,6 +595,7 @@ export const dummyMyBookingsData = [
     {
         "_id": "6847fe790fb481c5cfd92d94",
         "car": CarData[4],
+           name:"Mercedez Benz GMT GT-4 ",
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-11T00:00:00.000Z",
@@ -602,6 +608,7 @@ export const dummyMyBookingsData = [
     {
         "_id": "6847fe790fb481c5cfd92d99",
         "car": CarData[5],
+          name:"Mercedez Benz GMT GT-4 Door Coupe",
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-11T00:00:00.000Z",
@@ -614,6 +621,7 @@ export const dummyMyBookingsData = [
    {
         "_id": "6847fe790fb481c5cfd92d999",
         "car": CarData[7],
+        name:"Toyota Crown Hybrid Z" ,
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-11T00:00:00.000Z",
@@ -637,3 +645,34 @@ export const dummyDashboardData = {
     ],
     "monthlyRevenue": 840
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
