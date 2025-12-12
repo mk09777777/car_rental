@@ -10,7 +10,7 @@ import { CarProvider, useCarContext } from "../context/CarContext.jsx"
 import axios from "axios"
 import { useCarStore } from "../store/Cars.js"
 import { useNavigate } from "react-router-dom"
-import HomeSideBar from "../components/HomeSideBar"
+
 
 
 
@@ -27,8 +27,7 @@ function HomePageContent() {
 
   return (
     <Fragment>
-      <HomeSideBar />
-      <div className="ml-64">
+
         <Home1 />
       <div ref={featuredRef} className={`mt-20 bg-white overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${featuredVisible ? 'animate-slide-up' : ''}`}>
         <div className="flex flex-col justify-center items-center ">
@@ -62,7 +61,7 @@ function HomePageContent() {
        <div ref={reviewRef} className={`mt-10 bg-white  overflow-hidden w-full flex flex-col transition-all duration-800 ease-out ${reviewVisible ? 'animate-slide-up' : ''}`}>
         <Footer/>
       </div>
-      </div>
+    
     </Fragment>
   )
 }
