@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import { useCarStore } from "../store/Cars";
@@ -47,8 +47,11 @@ const CarDetails = () => {
   }
 
   return (
+      <Fragment>
+        <div className="bg-white flex flex-col ">
+           <Navigation/>
     <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-16 max-w-7xl">
-      <Navigation/>
+   
 
       <div className="mt-1 mb-6">
         <button 
@@ -114,6 +117,8 @@ const CarDetails = () => {
         </div>
       </div>
     </div>
+        </div>
+      </Fragment>
   );
 };
 
