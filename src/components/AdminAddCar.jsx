@@ -37,6 +37,12 @@ const OnUpload = (e) => {
 
 
 const SubmitCar = ()=>{
+    // Validate all required fields
+    if (!Brand || !Model || !Image || !Category || !SeatingCapacity || !DailyPrice || !FuelType || !Transmission || !Location) {
+        alert('Please fill all the required fields');
+        return;
+    }
+
     const Data = {
         name: Brand + " " + Model,
         image: Image,
@@ -46,11 +52,11 @@ const SubmitCar = ()=>{
         fuelType: FuelType,
         transmission: Transmission,
         location: Location,
-        description: Description
+        description: Description || ''
     }
     try {
         AddCar(Data);
-    
+     alert("Car added successfully"); 
         setBrand('');
         setModel('');
         setYear('');

@@ -43,6 +43,36 @@ fetchCarById: async(id)=>{
     set({loading:false,error:error.message});
     console.error('error in getting car details:',error);
   }
+},
+
+
+delCarById: async(id)=>{
+set({loading:true, error:null})
+try{
+  console.log('Deleting car with ID:', id);
+  const response = await axios.delete(`${API_BASE_URL}/deleteCar/${id}`);
+  console.log("car deleted successfully", response.data);
+  // Refresh the car list after deletion
+  const { fetchAllCars } = useCarStore.getState();
+  await fetchAllCars();
+  set({loading:false});
+}catch(error){
+  set({loading:false, error:error.message});
+  console.error('error in deleting car:',error);
+}
+},
+
+
+updateCarById: async(id,updatedCarData)=>{
+  set({loading:true, error:null})
+  try{
+    const response = await axios.put(`${API_BASE_URL}/updateCar/${id}`, updatedCarData);  
+    set({loading:false});
+    console.log("car updated successfully", response.data);
+  }catch(error){
+    set({loading:false, error:error.message});
+    console.error('error in updating car:', error); 
+  }
 }
 })
 );
